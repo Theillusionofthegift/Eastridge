@@ -21,8 +21,10 @@ const requestListener = function (req, res) {
         req.on('data', chunk => {
              buffer += chunk;
           });
-        //return html with buffer in the main 
-        req.on('end', () => {  
+        //return html with JSON content in the main 
+        req.on('end', () => { 
+            //parse buffer to JSON object
+           jsonContent = JSON.parse(buffer) 
            res.writeHead(200, {
             'Content-Type': 'text/html'});
             res.end(`
@@ -30,7 +32,7 @@ const requestListener = function (req, res) {
             <html>
             <body>
                 <main>
-                ${buffer}
+                ${JSON.stringify(jsonContent)}
                 </main>
             </body>
             </html>`);
@@ -38,17 +40,7 @@ const requestListener = function (req, res) {
     }
     else
     {
-        //HTML form that sends a POST request to the server
-        res.end(`
-        <!doctype html>
-        <html>
-        <body>
-            <form action="/" method="POST" target="_blank">
-                <input type="file" id="json" name="json">  <br />
-                <input type="submit" value="Submit">
-            </form>
-        </body>
-        </html>`);
+       res.end('This is Home Page');
     }
     
    
