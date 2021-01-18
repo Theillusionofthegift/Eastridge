@@ -4,6 +4,7 @@ const fs =  require('fs');
 const requestListener = function (req, res) {
     if(req.url === '/users')
     {
+        //read the users.html file returning a list of users
         fs.readFile('users.html', function(err, data) {
             if(err) {
                 throw err;
@@ -15,11 +16,12 @@ const requestListener = function (req, res) {
     }
     else if (req.method === 'POST')
     {
-
+        //read data into buffer from request object
         let buffer = '';
         req.on('data', chunk => {
              buffer += chunk;
           });
+        //return html with buffer in the main 
         req.on('end', () => {  
            res.writeHead(200, {
             'Content-Type': 'text/html'});
@@ -36,7 +38,7 @@ const requestListener = function (req, res) {
     }
     else
     {
-        //res.end("This is the home page");
+        //HTML form that sends a POST request to the server
         res.end(`
         <!doctype html>
         <html>
