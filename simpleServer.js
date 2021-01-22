@@ -6,9 +6,8 @@ const requestListener = function (req, res) {
     {
         //read the users.html file returning a list of users
         fs.readFile('users.html', function(err, data) {
-            if(err) {
-                throw err;
-            }
+            if(err) { throw err;}
+            
             res.writeHead(200, {'Content-Type': 'text/html'});
             res.write(data);
             return res.end();
@@ -25,18 +24,17 @@ const requestListener = function (req, res) {
         req.on('end', () => { 
             //parse buffer to JSON object
            jsonContent = JSON.parse(buffer) 
-           res.writeHead(200, {
-            'Content-Type': 'text/html'});
+           res.writeHead(200, { 'Content-Type': 'text/html'});
             res.end(`
-            <!doctype html>
-            <html>
-            <body>
-                <main>
-                ${JSON.stringify(jsonContent)}
-                </main>
-            </body>
-            </html>`);
-           })
+                <!doctype html>
+                <html>
+                <body>
+                    <main>
+                        ${JSON.stringify(jsonContent)}
+                    </main>
+                </body>
+                </html>`);
+          })
     }
     else
     {
