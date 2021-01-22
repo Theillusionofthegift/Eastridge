@@ -2,7 +2,7 @@ const http = require('http');
 const fs =  require('fs');
 
 const requestListener = function (req, res) {
-    if(req.url === '/users')
+    if(req.url === '/users' && req.method === 'GET')
     {
         //read the users.html file returning a list of users
         fs.readFile('users.html', function(err, data) {
@@ -14,7 +14,7 @@ const requestListener = function (req, res) {
             return res.end();
           });
     }
-    else if (req.method === 'POST')
+    else if (req.url === '/' && req.method === 'POST')
     {
         //read data into buffer from request object
         let buffer = '';
