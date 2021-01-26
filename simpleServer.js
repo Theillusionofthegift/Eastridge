@@ -20,16 +20,15 @@ const requestListener = function (req, res) {
             //parse buffer to JSON object
             jsonContent = JSON.parse(buffer) 
             res.writeHead(200, { 'Content-Type': 'text/html'});
-            res.end(`
-                <!doctype html>
-                    <html>
-                        <body>
-                            <main>
-                                ${JSON.stringify(jsonContent)}
-                            </main>
-                        </body>
-                    </html>`);
-          })
+            res.end(`<!doctype html>
+                        <html>
+                            <body>
+                                <main>
+                                    ${JSON.stringify(jsonContent)}
+                                </main>
+                            </body>
+                        </html>`);
+        })
     }
     else {
        res.end('This is Home Page');
