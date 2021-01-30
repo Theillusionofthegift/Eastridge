@@ -1,5 +1,5 @@
 import logo from './Illusion_Transparent..png';
-import './Illusion.css';
+import './App.css';
 import TitleBox from './component/TitleBox'
 
 function App() {
