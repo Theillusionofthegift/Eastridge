@@ -5,7 +5,7 @@
 * [Tech](#Tech)
 
 ## General info
-My Personal GitHub Repo 
+My Personal GitHub Repo -This is my projects from AD350
 
 ## Tech
-Node, React, MongoDB 
+Java
